@@ -1,3 +1,4 @@
+# ---------Composer of Django----------
 $ pip freeze
 certifi==2018.10.15
 chardet==3.0.4
@@ -27,3 +28,9 @@ whitenoise==3.2.1
 
 # Ấn toàn bộ gói đã cài đặt vào file  requirements.txt
 $ pip freeze > requirements.txt
+
+
+#----------Oauthen2-----------
+https://django-oauth-toolkit.readthedocs.io/en/latest/
+https://django-oauth-toolkit.readthedocs.io/en/latest/rest-framework/getting_started.html
+https://github.com/RealmTeam/django-rest-framework-social-oauth2
