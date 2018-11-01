@@ -33,4 +33,46 @@ $ pip freeze > requirements.txt
 #----------Oauthen2-----------
 https://django-oauth-toolkit.readthedocs.io/en/latest/
 https://django-oauth-toolkit.readthedocs.io/en/latest/rest-framework/getting_started.html
+#----django-rest-framework-social-oauth2==1.0.4------
 https://github.com/RealmTeam/django-rest-framework-social-oauth2
+
+
+Now go to django admin and add a new Application.
+client_id and client_secret shouldn't be changed
+user should be your superuser
+redirect_uris should be left blank
+client_type should be set to confidential
+authorization_grant_type should be set to 'Resource owner password-based'
+name can be set to whatever you want
+The installation is done, you can now test the app.
+
+Remember that you need to read the docs from python-social-auth and django-oauth-toolkit if you want to go further. If you want to enable a social backend (like facebook), check the docs of python-social-auth about supported backends or django-social-auth about bakends system.
+
+Testing the setup
+Now that the installation is done, let's try it ! Ask a token for an user using curl :
+
+curl -X POST -d "client_id=<client_id>&client_secret=<client_secret>&grant_type=password&username=<user_name>&password=<password>" http://localhost:8000/auth/token
+
+<client_id> and <client_secret> are the keys generated automatically that you can find in the model Application you created.
+
+Now let's imagine you need to refresh your token :
+
+curl -X POST -d "grant_type=refresh_token&client_id=<client_id>&client_secret=<client_secret>&refresh_token=<your_refresh_token>" http://localhost:8000/auth/token
+
+Now let's try something else ! Let's exchange an external token for a token linked to your app :
+
+curl -X POST -d "grant_type=convert_token&client_id=<client_id>&client_secret=<client_secret>&backend=<backend>&token=<backend_token>" http://localhost:8000/auth/convert-token
+
+
+curl -X POST \
+    http://localhost:8000/api/social/token/ \
+  -H 'content-type: application/json' \
+  -d '{
+  "grant_type":"password",
+  "username":"weshop.dev”,
+  "password”:”admin@123”
+   }' \
+ -u '{
+   “client_id”:”NtvkKDXhVxy2MEKuRN6EWe9uDrc2lYPBYwoCJAx4”,
+“client_secret”:”EqTbwJWVC59DXnicryvQWqbukfszl6egJ2y2pWSdDn7oCEdhf2NPa2rGJdvHZG4auZX4c2hL2WbN8LSuFw0CFP1bb6DYOXwk8R49RJ7RCumeym4fyNXX7wPgJLSYIfsA”
+   }'

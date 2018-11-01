@@ -81,6 +81,8 @@ WSGI_APPLICATION = 'foodtasker.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+#'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#dbip.sqlite3
 
 DATABASES = {
     'default': {
@@ -134,11 +136,16 @@ LOGIN_REDIRECT_URL = '/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+
 import dj_database_url
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
 AUTHENTICATION_BACKENDS = (
+   # Facebook OAuth2
+   'social_core.backends.facebook.FacebookAppOAuth2',
+   'social_core.backends.facebook.FacebookOAuth2',
+
    'social.backends.facebook.FacebookOAuth2',
    'rest_framework_social_oauth2.backends.DjangoOAuth2',
    'django.contrib.auth.backends.ModelBackend',
@@ -168,3 +175,6 @@ SOCIAL_AUTH_PIPELINE = (
 )
 
 STRIPE_API_KEY = 'sk_test_vBLAUomv7lb32iEaxkP4fiQk'
+CSRF_COOKIE_SECURE = True
+
+#APPEND_SLASH=True

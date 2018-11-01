@@ -124,6 +124,7 @@ def customer_get_latest_order(request):
 
     return JsonResponse({"order": order})
 
+@csrf_exempt
 def customer_driver_location(request):
     access_token = AccessToken.objects.get(token = request.GET.get("access_token"),
         expires__gt = timezone.now())
