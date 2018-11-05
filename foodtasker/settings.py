@@ -179,8 +179,8 @@ CSRF_COOKIE_SECURE = True
 
 #APPEND_SLASH=True
 # 'oauth2_provider.ext.rest_framework.OAuth2Authentication',
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
-    )
-}
+#REST_FRAMEWORK = {
+#    'DEFAULT_AUTHENTICATION_CLASSES': (
+#        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+#    )
+#}
