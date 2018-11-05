@@ -1,5 +1,6 @@
 # [START django_app]
 runtime: python27
+entrypoint: gunicorn -b :$PORT foodtasker.wsgi:main
 api_version: 1
 threadsafe: yes
 

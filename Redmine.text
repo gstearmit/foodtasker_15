@@ -76,3 +76,8 @@ curl -X POST \
    “client_id”:”NtvkKDXhVxy2MEKuRN6EWe9uDrc2lYPBYwoCJAx4”,
 “client_secret”:”EqTbwJWVC59DXnicryvQWqbukfszl6egJ2y2pWSdDn7oCEdhf2NPa2rGJdvHZG4auZX4c2hL2WbN8LSuFw0CFP1bb6DYOXwk8R49RJ7RCumeym4fyNXX7wPgJLSYIfsA”
    }'
+
+
+   gunicorn --bind 0.0.0.0:8000 foodtasker.wsgi:application
+
+   PYTHONPATH=`pwd`/..  gunicorn --bind 0.0.0.0:8000 foodtasker.wsgi:application
