@@ -9,18 +9,19 @@ from foodtaskerapp.models import Meal, Order, Driver
 
 from django.db.models import Sum, Count, Case, When
 
-# @classmethod
-# def test(cls):
-#     return ''
+from django.views.decorators.csrf import csrf_protect
 
+@csrf_protect
 # Create your views here.
 def home(request):
     return redirect(restaurant_home)
 
+@csrf_protect
 @login_required(login_url='/restaurant/sign-in/')
 def restaurant_home(request):
     return redirect(restaurant_order)
 
+@csrf_protect
 @login_required(login_url='/restaurant/sign-in/')
 def restaurant_account(request):
     user_form = UserFormForEdit(instance = request.user)
@@ -39,11 +40,13 @@ def restaurant_account(request):
         "restaurant_form": restaurant_form
     })
 
+@csrf_protect
 @login_required(login_url='/restaurant/sign-in/')
 def restaurant_meal(request):
     meals = Meal.objects.filter(restaurant = request.user.restaurant).order_by("-id")
     return render(request, 'restaurant/meal.html', {"meals": meals})
 
+@csrf_protect
 @login_required(login_url='/restaurant/sign-in/')
 def restaurant_add_meal(request):
     form = MealForm()
@@ -61,6 +64,7 @@ def restaurant_add_meal(request):
         "form": form
     })
 
+@csrf_protect
 @login_required(login_url='/restaurant/sign-in/')
 def restaurant_edit_meal(request, meal_id):
     form = MealForm(instance = Meal.objects.get(id = meal_id))
@@ -76,7 +80,7 @@ def restaurant_edit_meal(request, meal_id):
         "form": form
     })
 
-
+@csrf_protect
 @login_required(login_url='/restaurant/sign-in/')
 def restaurant_order(request):
     if request.method == "POST":
@@ -89,6 +93,7 @@ def restaurant_order(request):
     orders = Order.objects.filter(restaurant = request.user.restaurant).order_by("-id")
     return render(request, 'restaurant/order.html', {"orders": orders})
 
+@csrf_protect
 @login_required(login_url='/restaurant/sign-in/')
 def restaurant_report(request):
     # Calculate revenue and number of order by current week
@@ -144,6 +149,8 @@ def restaurant_report(request):
         "driver": driver
     })
 
+
+@csrf_protect
 def restaurant_sign_up(request):
     user_form = UserForm()
     restaurant_form = RestaurantForm()

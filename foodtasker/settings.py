@@ -24,11 +24,16 @@ SECRET_KEY = '-jg2ngl7$$ejo!&cr7v^#yxcyggdo#bm4!op3x3m72nnf5#1l0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+    #False
+#CSRF_FAILURE_VIEW = False
 #CSRF_COOKIE_SECURE = True
 #SESSION_COOKIE_SECURE = True
 #CSRF_COOKIE_SECURE
 ALLOWED_HOSTS = []
 
+
+CSRF_USE_SESSIONS = False
+CSRF_COOKIE_HTTPONLY = False
 
 # Application definition
 
