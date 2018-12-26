@@ -24,7 +24,9 @@ SECRET_KEY = '-jg2ngl7$$ejo!&cr7v^#yxcyggdo#bm4!op3x3m72nnf5#1l0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+#CSRF_COOKIE_SECURE = True
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE
 ALLOWED_HOSTS = []
 
 
@@ -42,7 +44,8 @@ INSTALLED_APPS = [
     #'social.apps.django_app.default',
     'social_django',
     'rest_framework_social_oauth2',
-    'bootstrap3'
+    'bootstrap4',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'foodtasker.urls'

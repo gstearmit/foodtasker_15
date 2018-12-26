@@ -9,6 +9,10 @@ from foodtaskerapp.models import Meal, Order, Driver
 
 from django.db.models import Sum, Count, Case, When
 
+# @classmethod
+# def test(cls):
+#     return ''
+
 # Create your views here.
 def home(request):
     return redirect(restaurant_home)

@@ -11,10 +11,10 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
 
     # Restaurant
-    url(r'^restaurant/sign-in/$', auth_views.login,
+    url(r'^restaurant/sign-in/$', auth_views.LoginView,
         {'template_name': 'restaurant/sign_in.html'},
         name = 'restaurant-sign-in'),
-    url(r'^restaurant/sign-out', auth_views.logout,
+    url(r'^restaurant/sign-out', auth_views.LogoutView,
         {'next_page': '/'},
         name = 'restaurant-sign-out'),
     url(r'^restaurant/sign-up', views.restaurant_sign_up,
@@ -52,3 +52,15 @@ urlpatterns = [
     url(r'^api/driver/location/update/$', apis.driver_update_location),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Debug
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+       url('__debug__/', include(debug_toolbar.urls)),
+
+        # For django versions before 2.0:
+        # url(r'^__debug__/', include(debug_toolbar.urls)),
+
+    ] + urlpatterns

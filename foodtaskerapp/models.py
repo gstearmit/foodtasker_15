@@ -33,7 +33,7 @@ class Driver(models.Model):
         return self.user.get_full_name()
 
 class Meal(models.Model):
-    restaurant = models.ForeignKey(Restaurant)
+    restaurant = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
     name = models.CharField(max_length=500)
     short_description = models.CharField(max_length=500)
     image = models.ImageField(upload_to='meal_images/', blank=False)
@@ -55,9 +55,9 @@ class Order(models.Model):
         (DELIVERED, "Delivered"),
     )
 
-    customer = models.ForeignKey(Customer)
-    restaurant = models.ForeignKey(Restaurant)
-    driver = models.ForeignKey(Driver, blank = True, null = True)
+    customer = models.ForeignKey(Customer,on_delete=models.CASCADE)
+    restaurant = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
+    driver = models.ForeignKey(Driver,on_delete=models.CASCADE, blank = True, null = True)
     address = models.CharField(max_length=500)
     total = models.IntegerField()
     status = models.IntegerField(choices = STATUS_CHOICES)
@@ -69,8 +69,8 @@ class Order(models.Model):
 
 
 class OrderDetails(models.Model):
-    order = models.ForeignKey(Order, related_name='order_details')
-    meal = models.ForeignKey(Meal)
+    order = models.ForeignKey(Order,on_delete=models.CASCADE ,related_name='order_details')
+    meal = models.ForeignKey(Meal,on_delete=models.CASCADE)
     quantity = models.IntegerField()
     sub_total = models.IntegerField()
 
