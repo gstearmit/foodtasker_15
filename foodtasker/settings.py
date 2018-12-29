@@ -25,15 +25,16 @@ SECRET_KEY = '-jg2ngl7$$ejo!&cr7v^#yxcyggdo#bm4!op3x3m72nnf5#1l0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
     #False
+
+#https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-CSRF_COOKIE_AGE
 #CSRF_FAILURE_VIEW = False
 #CSRF_COOKIE_SECURE = True
 #SESSION_COOKIE_SECURE = True
 #CSRF_COOKIE_SECURE
-ALLOWED_HOSTS = []
 
 
-CSRF_USE_SESSIONS = False
-CSRF_COOKIE_HTTPONLY = False
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+
 
 # Application definition
 
@@ -50,7 +51,6 @@ INSTALLED_APPS = [
     'social_django',
     'rest_framework_social_oauth2',
     'bootstrap4',
-    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +61,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'foodtasker.urls'
@@ -193,3 +192,34 @@ CSRF_COOKIE_SECURE = True
 #        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
 #    )
 #}
+
+
+## Debug Bar
+if DEBUG:
+       INTERNAL_IPS = ('127.0.0.1', 'localhost',)
+       MIDDLEWARE += (
+           'debug_toolbar.middleware.DebugToolbarMiddleware',
+       )
+
+       INSTALLED_APPS += (
+           'debug_toolbar',
+       )
+
+       DEBUG_TOOLBAR_PANELS = [
+           'debug_toolbar.panels.versions.VersionsPanel',
+           'debug_toolbar.panels.timer.TimerPanel',
+           'debug_toolbar.panels.settings.SettingsPanel',
+           'debug_toolbar.panels.headers.HeadersPanel',
+           'debug_toolbar.panels.request.RequestPanel',
+           'debug_toolbar.panels.sql.SQLPanel',
+           'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+           'debug_toolbar.panels.templates.TemplatesPanel',
+           'debug_toolbar.panels.cache.CachePanel',
+           'debug_toolbar.panels.signals.SignalsPanel',
+           'debug_toolbar.panels.logging.LoggingPanel',
+           'debug_toolbar.panels.redirects.RedirectsPanel',
+       ]
+
+       DEBUG_TOOLBAR_CONFIG = {
+           'INTERCEPT_REDIRECTS': False,
+       }
