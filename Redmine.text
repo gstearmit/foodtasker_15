@@ -85,7 +85,7 @@
 3. # ------Boostrap4 Installation---------
     Install using pip:
 
-    $ pip install django-bootstrap4
+    $pip install django-bootstrap4
 
     Alternatively, you can install download or clone this repo and call pip install -e ..
 
