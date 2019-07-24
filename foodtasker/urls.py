@@ -11,8 +11,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
 
     # Restaurant
-    url(r'^restaurant/sign-in/$', auth_views.LoginView,
-        {'template_name': 'restaurant/sign_in.html'},
+    url(r'^restaurant/sign-in/$', auth_views.LoginView.as_view(),
         name = 'restaurant-sign-in'),
     url(r'^restaurant/sign-out', auth_views.LogoutView,
         {'next_page': '/'},
