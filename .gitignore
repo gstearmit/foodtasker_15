@@ -3,3 +3,8 @@ db.sqlite3
 *.pyc
 foodtasker/bin/
 foodtasker/lib/
+.gcloudignore
+.idea/foodtasker_Task_15_Completed.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml

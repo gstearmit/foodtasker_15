@@ -108,3 +108,31 @@
         {% endbuttons %}
     </form>
 
+4. Git
+https://github.com/gstearmit/foodtasker_15/tree/master-uat
+
+
+5.  —————Hard Code —————
+    $ python -m venv  foodtasker
+    $ cd /Users/gstearmit/Downloads/Python/foodtasker_Task_4_Completed
+    $ source foodtasker/bin/activate
+    $ pip  install -r requirements.txt
+
+    —————Data Base ————————
+    $ python manage.py migrate
+    $ python manage.py createsuperuser
+    Enter your desired username and press enter.
+    Username: admin
+    You will then be prompted for your desired email address:
+    Email address: admin@admin.com / admin@123
+
+    $ python manage.py runserver
+    http://127.0.0.1:8000/admin/
+
+    ————— Khi có Model mới cần update vào db ——————
+    $ python manage.py makemigrations
+    $ python manage.py migrate
+
+6 . Step-By-Step
+   1. $ source foodtasker/bin/activate
+   2. $ python manage.py runserver
