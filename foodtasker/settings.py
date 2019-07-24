@@ -183,7 +183,7 @@ SOCIAL_AUTH_PIPELINE = (
 )
 
 STRIPE_API_KEY = 'sk_test_vBLAUomv7lb32iEaxkP4fiQk'
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
 
 #APPEND_SLASH=True
 # 'oauth2_provider.ext.rest_framework.OAuth2Authentication',
